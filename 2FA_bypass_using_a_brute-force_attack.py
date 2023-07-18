@@ -9,7 +9,7 @@ proxies = {'http': 'http://127.0.0.1:8080', 'https':'http://127.0.0.1:8080'}
 
 def get_csrf_token(r):
     soup = BeautifulSoup(r.text, 'html.parser')
-    csrf = soup.find("input")['value']
+    csrf = soup.find("input", {'name': 'csrf'})['value']
     return csrf
 
 def first_request(url, point):
